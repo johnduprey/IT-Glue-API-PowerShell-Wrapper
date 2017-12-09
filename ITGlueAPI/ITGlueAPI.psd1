@@ -66,6 +66,7 @@ PowerShellVersion = '3.0'
 NestedModules = 'Internal/BaseURI.ps1',
                 'Internal/APIKey.ps1',
                 'Internal/ModuleSettings.ps1',
+                'Internal/UpdateModule.ps1',
                 'Resources/ConfigurationInterfaces.ps1',
                 'Resources/Configurations.ps1',
                 'Resources/ConfigurationStatuses.ps1',
@@ -101,6 +102,8 @@ FunctionsToExport = 'Add-ITGlueAPIKey',
                     'Export-ITGlueModuleSettings',
                     'Import-ITGlueModuleSettings',
 
+                    'Update-ITGlueModule'
+
                     #'New-ITGlueConfigurationInterfaces',
                     'Get-ITGlueConfigurationInterfaces',
                     #'Set-ITGlueConfigurationInterfaces',
@@ -131,8 +134,8 @@ FunctionsToExport = 'Add-ITGlueAPIKey',
                     'Get-ITGlueFavoriteOrganizations',
                     #'Remove-ITGlueFavoriteOrganizations',
 
-                    #'New-ITGlueFlexibleAssets',
-                    #'Get-ITGlueFlexibleAssets',
+                    'New-ITGlueFlexibleAssets',
+                    'Get-ITGlueFlexibleAssets',
                     #'Set-ITGlueFlexibleAssets',
 
                     #'New-ITGlueFlexibleAssetFields',
