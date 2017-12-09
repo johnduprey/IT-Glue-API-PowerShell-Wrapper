@@ -24,7 +24,7 @@ function Get-ITGlueBaseURI {
 }
 
 try {
-    New-Alias -Name Set-ITGlueBaseURI -Value Add-ITGlueBaseURI
+    New-Alias -Name Set-ITGlueBaseURI -Value Add-ITGlueBaseURI -ErrorAction SilentlyContinue
 }
 catch {
     # alias already exists
