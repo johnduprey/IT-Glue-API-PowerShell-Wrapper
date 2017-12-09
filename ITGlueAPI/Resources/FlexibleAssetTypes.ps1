@@ -8,7 +8,7 @@ function Get-ITGlueFlexibleAssetTypes {
         [String]$filter_icon = "",
 
         [Parameter(ParameterSetName="index")]
-        [String]]$filter_enabled = "",
+        [String]$filter_enabled = "",
 
         [Parameter(ParameterSetName="index")]
         [ValidateSet( "name",  "id", `
