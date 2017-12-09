@@ -15,4 +15,9 @@ function Get-ITGlueAPIKey {
     Write-Host "Use Get-ITGlueAPIKey -Force to retrieve the unencrypted copy." -ForegroundColor "Red"
 }
 
-New-Alias -Name Set-ITGlueAPIKey -Value Add-ITGlueAPIKey
+try {
+    New-Alias -Name Set-ITGlueAPIKey -Value Add-ITGlueAPIKey
+}
+catch {
+    # Alias already exists   
+}

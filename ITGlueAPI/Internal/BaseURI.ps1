@@ -23,4 +23,9 @@ function Get-ITGlueBaseURI {
     $ITGlue_Base_URI
 }
 
-New-Alias -Name Set-ITGlueBaseURI -Value Add-ITGlueBaseURI
+try {
+    New-Alias -Name Set-ITGlueBaseURI -Value Add-ITGlueBaseURI
+}
+catch {
+    # alias already exists
+}
