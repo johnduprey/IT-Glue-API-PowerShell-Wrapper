@@ -102,7 +102,7 @@ FunctionsToExport = 'Add-ITGlueAPIKey',
                     'Export-ITGlueModuleSettings',
                     'Import-ITGlueModuleSettings',
 
-                    'Update-ITGlueModule'
+                    'Update-ITGlueModule',
 
                     #'New-ITGlueConfigurationInterfaces',
                     'Get-ITGlueConfigurationInterfaces',
