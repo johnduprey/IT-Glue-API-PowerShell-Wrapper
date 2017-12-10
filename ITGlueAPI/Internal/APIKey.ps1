@@ -1,8 +1,17 @@
 function Add-ITGlueAPIKey {
+    [cmdletbinding()]
+    Param (
+        [parameter(ValueFromPipeline)]
+        [string]$api_key = $null
+    )
+    if ($api_key -eq $null) {
         Write-Host "Please enter your API key:"
         $x_api_key = Read-Host -AsSecureString
-
-        Set-Variable -Name "ITGlue_API_Key"  -Value $x_api_key -Option ReadOnly -Scope global -Force
+    }
+    else {
+        $x_api_key = ConvertTo-SecureString -String $api_key -AsPlainText -Force
+    }
+    Set-Variable -Name "ITGlue_API_Key"  -Value $x_api_key -Option ReadOnly -Scope global -Force
 }
 
 
