@@ -56,8 +56,7 @@ function Get-ITGlueContacts {
             $body += @{"page[size]" = $page_size}
         }
     }
-
-
+    $ITGlue_Headers = @{}
     $ITGlue_Headers.Add("x-api-key", (New-Object System.Management.Automation.PSCredential 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
     $rest_output = Invoke-RestMethod -method "GET" -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
                                      -body $body -ErrorAction Stop -ErrorVariable $web_error

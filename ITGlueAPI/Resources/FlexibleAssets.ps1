@@ -34,7 +34,6 @@ function Get-ITGlueFlexibleAssets {
         if($filter_name) {
             $body += @{"filter[name]" = $filter_name}
         }
- 
         if($filter_organization_id) {
             $body += @{"filter[organization_id]" = $filter_organization_id}
         }
@@ -49,6 +48,7 @@ function Get-ITGlueFlexibleAssets {
         }
     }
 
+    $ITGlue_Headers = @{}
     $ITGlue_Headers.Add("x-api-key", (New-Object System.Management.Automation.PSCredential 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
     $rest_output = Invoke-RestMethod -method "GET" -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
                                      -body $body -ErrorAction Stop -ErrorVariable $web_error
@@ -95,6 +95,8 @@ function New-ITGlueFlexibleAssets {
         }
     }
     $body = $post | ConvertTo-Json -Depth 10
+
+    $ITGlue_Headers = @{}
     $ITGlue_Headers.Add("x-api-key", (New-Object System.Management.Automation.PSCredential 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
     $rest_output = Invoke-RestMethod -method $method -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
                                      -body $body -ErrorAction Stop -ErrorVariable $web_error
