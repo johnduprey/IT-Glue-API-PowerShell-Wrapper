@@ -140,9 +140,8 @@ FunctionsToExport = 'Add-ITGlueAPIKey',
                     'New-ITGlueFlexibleAssetFields',
                     'Get-ITGlueFlexibleAssetFields',
 
-                    #'New-ITGlueFlexibleAssetTypes',
+                    'New-ITGlueFlexibleAssetTypes',
                     'Get-ITGlueFlexibleAssetTypes',
-                    #'Set-ITGlueFlexibleAssetTypes',
                     
                     #'New-ITGlueLocations',
                     'Get-ITGlueLocations',
