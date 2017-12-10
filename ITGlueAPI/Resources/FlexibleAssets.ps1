@@ -70,9 +70,19 @@ function New-ITGlueFlexibleAssets {
 
         [Parameter(ParameterSetName="index")]
         [String]$traits
+
+        [Parameter(ParameterSetName="index")]
+        [Int[Nullable]]$id = $null
     )
 
-    $resource_uri = "/flexible_assets"
+    $resource_uri = "/flexible_assets/$id"
+
+    if ($id -eq $null) {
+        $method = "POST"
+    }
+    else {
+        $method = "PATCH"
+    }
 
     $post = @{
         data = @{
@@ -86,7 +96,7 @@ function New-ITGlueFlexibleAssets {
     }
     $body = $post | ConvertTo-Json -Depth 10
     $ITGlue_Headers.Add("x-api-key", (New-Object System.Management.Automation.PSCredential 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
-    $rest_output = Invoke-RestMethod -method "POST" -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
+    $rest_output = Invoke-RestMethod -method $method -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
                                      -body $body -ErrorAction Stop -ErrorVariable $web_error
     $ITGlue_Headers.Remove('x-api-key') >$null # Quietly clean up scope so the API key doesn't persist
 
@@ -95,3 +105,5 @@ function New-ITGlueFlexibleAssets {
     return $data
 
 }
+
+New-Alias -Name Update-ITGlueFlexibleAssets -Value New-ITGlueFlexibleAssets -ErrorAction SilentlyContinue

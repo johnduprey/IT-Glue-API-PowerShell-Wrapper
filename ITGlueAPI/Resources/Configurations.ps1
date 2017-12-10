@@ -60,7 +60,6 @@ function Get-ITGlueConfigurations {
     $rest_output = Invoke-RestMethod -method "GET" -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers -body $body
     $ITGlue_Headers.Remove('x-api-key') >$null # Quietly clean up scope so the API key doesn't persist
 
-
     $data = $rest_output   
     return $data
 }
