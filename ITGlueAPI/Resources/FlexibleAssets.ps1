@@ -96,7 +96,8 @@ function New-ITGlueFlexibleAssets {
     }
     $body = $post | ConvertTo-Json -Depth 10
 
-    $ITGlue_Headers = @{}
+    $ITGlue_Headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"   
+    $ITGlue_Headers.Add("Content-Type", 'application/vnd.api+json') 
     $ITGlue_Headers.Add("x-api-key", (New-Object System.Management.Automation.PSCredential 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
     $rest_output = Invoke-RestMethod -method $method -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers `
                                      -body $body -ErrorAction Stop -ErrorVariable $web_error
