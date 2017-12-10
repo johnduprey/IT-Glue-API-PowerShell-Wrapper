@@ -69,7 +69,7 @@ function New-ITGlueFlexibleAssets {
         [Int]$flexible_asset_type_id,
 
         [Parameter(ParameterSetName="index")]
-        [String]$traits
+        [String]$traits,
 
         [Parameter(ParameterSetName="index")]
         [Int[Nullable]]$id = $null
