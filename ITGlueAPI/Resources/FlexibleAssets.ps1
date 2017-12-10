@@ -72,7 +72,7 @@ function New-ITGlueFlexibleAssets {
         [String]$traits,
 
         [Parameter(ParameterSetName="index")]
-        [Int[Nullable]]$id = $null
+        [Nullable[Int]]$id = $null
     )
 
     $resource_uri = "/flexible_assets/$id"
