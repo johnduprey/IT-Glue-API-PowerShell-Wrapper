@@ -65,26 +65,18 @@ function New-ITGlueFlexibleAssetTypes {
     [CmdletBinding(DefaultParameterSetName="index")]
     Param (
         [Parameter(ParameterSetName="index")]
-        [Int]$organization_id,
+        [Nullable[Int]]$id = $null,
 
         [Parameter(ParameterSetName="index")]
-        [Int]$flexible_asset_type_id,
-
-        [Parameter(ParameterSetName="index")]
-        [String]$traits
+        [String]$data
     )
 
-    $resource_uri = "/flexible_assets"
-
-    $post = @{
-        data = @{
-            "type" = "flexible-assets"
-            "attributes" = @{    
-                "flexible-asset-type-id" = $flexible_asset_type_id
-                "organization-id" = $organization_id
-                "traits" = $traits | ConvertFrom-Json
-            }
-        }
+    $resource_uri = "/flexible_asset_types/$id"
+    if ($id -eq $null) {
+        $method = "POST"
+    }
+    else {
+        $method = "PATCH"
     }
     $body = $post | ConvertTo-Json -Depth 10
 
@@ -100,3 +92,5 @@ function New-ITGlueFlexibleAssetTypes {
     return $data
 
 }
+
+New-Alias -Name Update-ITGlueFlexibleAssetTypes -Value New-ITGlueFlexibleAssetTypes -ErrorAction SilentlyContinue
