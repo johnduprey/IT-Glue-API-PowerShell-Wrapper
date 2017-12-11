@@ -74,4 +74,3 @@ function New-ITGlueFlexibleAssetFields {
 }
 
 New-Alias -Name Update-ITGlueFlexibleAssetFields -Value New-ITGlueFlexibleAssetFields -ErrorAction SilentlyContinue
-
