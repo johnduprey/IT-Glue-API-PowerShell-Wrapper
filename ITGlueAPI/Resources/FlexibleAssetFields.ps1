@@ -58,7 +58,7 @@ function New-ITGlueFlexibleAssetFields {
         $method = "PATCH"
     }
 
-    $body = $data | ConvertTo-Json -Depth 10
+    $body = $data 
 
     $ITGlue_Headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"   
     $ITGlue_Headers.Add("Content-Type", 'application/vnd.api+json') 
