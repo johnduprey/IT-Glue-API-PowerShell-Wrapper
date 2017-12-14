@@ -29,7 +29,6 @@ function Get-ITGlueConfigurations {
         [Parameter(ParameterSetName="index")]
         [Nullable[int]]$page_size = $null,
 
-        [Parameter(ParameterSetName="index")]
         [String]$include = "",
 
         [Parameter(ParameterSetName="show")]
@@ -49,12 +48,12 @@ function Get-ITGlueConfigurations {
         if($filter_configuration_status_id) {$body += @{"filter[configuration-status-id]" = $filter_configuration_status_id}}
         if($page_number) {$body += @{"page[number]" = $page_number}}
         if($page_size) {$body += @{"page[size]" = $page_size}}
-        if($include) {$body += @{"include" = $include}}
     }
     else {
         #Parameter set "Show" is selected; switch to nested relationships route
         $resource_uri = "/organizations/${organization_id}/relationships/configurations/${id}"
     }
+    if($include) {$body += @{"include" = $include}}
 
     $ITGlue_Headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"   
     $ITGlue_Headers.Add("Content-Type", 'application/vnd.api+json') 
