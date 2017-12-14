@@ -49,6 +49,7 @@ function Get-ITGlueConfigurations {
         if($filter_configuration_status_id) {$body += @{"filter[configuration-status-id]" = $filter_configuration_status_id}}
         if($page_number) {$body += @{"page[number]" = $page_number}}
         if($page_size) {$body += @{"page[size]" = $page_size}}
+        if($include) {$body += @{"include" = $include}}
     }
     else {
         #Parameter set "Show" is selected; switch to nested relationships route
