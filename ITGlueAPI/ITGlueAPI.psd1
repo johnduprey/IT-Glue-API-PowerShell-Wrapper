@@ -118,6 +118,7 @@ FunctionsToExport = 'Add-ITGlueAPIKey',
 
                     #'New-ITGlueConfigurations',
                     'Get-ITGlueConfigurations',
+                    'Remove-ITGlueConfigurations'
                     #'Set-ITGlueConfigurations',
                     
                     #'New-ITGlueContactTypes',

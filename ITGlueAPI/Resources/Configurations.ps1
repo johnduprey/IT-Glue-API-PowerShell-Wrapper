@@ -64,3 +64,19 @@ function Get-ITGlueConfigurations {
     $data = $rest_output   
     return $data
 }
+
+function Remove-ITGlueConfigurations {
+    Param(
+        [Int]$organization_id,
+        [Int]$id
+    )
+    $resource_uri = "/organizations/${organization_id}/relationships/configurations/${id}"
+    $ITGlue_Headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"   
+    $ITGlue_Headers.Add("Content-Type", 'application/vnd.api+json') 
+    $ITGlue_Headers.Add("x-api-key", (New-Object System.Management.Automation.PSCredential 'N/A', $ITGlue_API_Key).GetNetworkCredential().Password)
+    $rest_output = Invoke-RestMethod -method "DELETE" -uri ($ITGlue_Base_URI + $resource_uri) -headers $ITGlue_Headers -body $body
+    $ITGlue_Headers.Remove('x-api-key') >$null # Quietly clean up scope so the API key doesn't persist
+
+    $data = $rest_output   
+    return $data
+}
